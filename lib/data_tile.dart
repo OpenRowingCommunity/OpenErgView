@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:openergview/constants.dart';
 
 class DataTile extends StatefulWidget {
   final String title;
@@ -16,12 +17,15 @@ class _DataTileState extends State<DataTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        decoration: BoxDecoration(
+            gradient: getDarkGradient(context),
+            border: Border.all(style: BorderStyle.solid, color: Colors.white)),
         child: Column(
-      children: [
-        Text(widget.title),
-        Text(widget.value.toStringAsPrecision(4)),
-        if (widget.unit != null) Text(widget.unit!),
-      ],
-    ));
+          children: [
+            Text(widget.title),
+            Text(widget.value.toStringAsPrecision(4)),
+            if (widget.unit != null) Text(widget.unit!),
+          ],
+        ));
   }
 }
