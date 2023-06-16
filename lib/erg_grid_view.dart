@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:openergview/data_tile.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -61,6 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
   // The images are saved with names pic0.jpg, pic1.jpg...pic29.jpg.
 // The List.generate() constructor allows an easy way to create
 // a list when objects have a predictable naming pattern.
-  List<Container> _buildGridTileList(int count) =>
-      List.generate(count, (i) => Container(child: Text('test$i')));
+  List<DataTile> _buildGridTileList(int count) =>
+      List.generate(count, (i) => DataTile(title: "test", value: i.toDouble()));
 }
