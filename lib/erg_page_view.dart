@@ -12,13 +12,13 @@ class ErgPageView extends StatefulWidget {
 class _ErgPageViewState extends State<ErgPageView> {
   @override
   Widget build(BuildContext context) {
-    final PageController controller = PageController(initialPage: 0);
+    final PageController pageController = PageController(initialPage: 0);
 
     return Scaffold(
         body: PageView(
           /// [PageView.scrollDirection] defaults to [Axis.horizontal].
           /// Use [Axis.vertical] to scroll vertically.
-          controller: controller,
+          controller: pageController,
           onPageChanged: (newIndex) {
             setState(() {
               // _currentIndex = newIndex;
