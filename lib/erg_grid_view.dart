@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:openergview/data_tile.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class ErgGridView extends StatefulWidget {
+  const ErgGridView({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -16,10 +16,10 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<ErgGridView> createState() => _ErgGridViewState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ErgGridViewState extends State<ErgGridView> {
   int _counter = 0;
 
   void _incrementCounter() {
