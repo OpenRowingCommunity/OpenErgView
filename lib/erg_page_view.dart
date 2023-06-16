@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:openergview/erg_grid_view.dart';
 
-class ErgPageView extends StatelessWidget {
-  const ErgPageView({Key? key}) : super(key: key);
+class ErgPageView extends StatefulWidget {
+  ErgPageView({Key? key}) : super(key: key);
+
+  @override
+  _ErgPageViewState createState() => _ErgPageViewState();
+}
+
+class _ErgPageViewState extends State<ErgPageView> {
 
   @override
   Widget build(BuildContext context) {
