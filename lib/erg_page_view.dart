@@ -9,22 +9,43 @@ class ErgPageView extends StatefulWidget {
 }
 
 class _ErgPageViewState extends State<ErgPageView> {
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    final PageController controller = PageController();
+    final PageController controller = PageController(initialPage: 0);
 
-    return PageView(
-      /// [PageView.scrollDirection] defaults to [Axis.horizontal].
-      /// Use [Axis.vertical] to scroll vertically.
-      controller: controller,
-      children: const <Widget>[
-        ErgGridView(),
-        Center(
-          child: Text('First Page'),
-        ),
-        ErgGridView()
-      ],
+    return Scaffold(
+      body: PageView(
+        /// [PageView.scrollDirection] defaults to [Axis.horizontal].
+        /// Use [Axis.vertical] to scroll vertically.
+        controller: controller,
+        onPageChanged: (newIndex) {
+          setState(() {
+            _currentIndex = newIndex;
+          });
+        },
+        children: const <Widget>[
+          ErgGridView(),
+          Center(
+            child: Text('First Page'),
+          ),
+          ErgGridView()
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "1"),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "2"),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "3")
+        ],
+        type: BottomNavigationBarType.fixed,
+        onTap: (newIndex) {
+          controller.animateToPage(newIndex,
+              duration: Duration(milliseconds: 500), curve: Curves.ease);
+        },
+      ),
     );
   }
 }
