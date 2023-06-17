@@ -91,7 +91,7 @@ class _ErgPageViewState extends State<ErgPageView>
                         tooltip: 'Next',
                         icon: const Icon(Icons.arrow_forward),
                         disabledColor: Colors.grey,
-                        onPressed: _currentIndex != _pageCount
+                        onPressed: _currentIndex != _pageCount - 1
                             ? () => setState(() {
                                   pageController.animateToPage(
                                       _currentIndex + 1,
