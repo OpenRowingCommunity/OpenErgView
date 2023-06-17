@@ -70,6 +70,7 @@ class _ErgPageViewState extends State<ErgPageView>
                       IconButton(
                         tooltip: 'Previous',
                         icon: const Icon(Icons.arrow_back),
+                        disabledColor: Colors.grey,
                         onPressed: _currentIndex != 0
                             ? () => setState(() {
                                   pageController.animateToPage(
@@ -80,13 +81,16 @@ class _ErgPageViewState extends State<ErgPageView>
                             : null,
                       ),
                     TabPageSelector(
-                      color: Colors.black38,
+                      color: Colors.grey,
+                      borderStyle: BorderStyle.none,
+                      selectedColor: Colors.white,
                       controller: tabController,
                     ),
                     if (isPointerDevice(context))
                       IconButton(
                         tooltip: 'Next',
                         icon: const Icon(Icons.arrow_forward),
+                        disabledColor: Colors.grey,
                         onPressed: _currentIndex != _pageCount
                             ? () => setState(() {
                                   pageController.animateToPage(
