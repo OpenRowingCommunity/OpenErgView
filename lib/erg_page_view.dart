@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:openergview/constants.dart';
 import 'package:openergview/erg_grid_view.dart';
 
+import 'utils.dart';
+
 class ErgPageView extends StatefulWidget {
   ErgPageView({Key? key}) : super(key: key);
 
@@ -64,10 +66,36 @@ class _ErgPageViewState extends State<ErgPageView>
                     //   onPressed: () {},
                     // ),
                     const Spacer(),
+                    if (isPointerDevice(context))
+                      IconButton(
+                        tooltip: 'Previous',
+                        icon: const Icon(Icons.arrow_back),
+                        onPressed: _currentIndex != 0
+                            ? () => setState(() {
+                                  pageController.animateToPage(
+                                      _currentIndex - 1,
+                                      duration: Duration(milliseconds: 500),
+                                      curve: Curves.ease);
+                                })
+                            : null,
+                      ),
                     TabPageSelector(
                       color: Colors.black38,
                       controller: tabController,
                     ),
+                    if (isPointerDevice(context))
+                      IconButton(
+                        tooltip: 'Next',
+                        icon: const Icon(Icons.arrow_forward),
+                        onPressed: _currentIndex != _pageCount
+                            ? () => setState(() {
+                                  pageController.animateToPage(
+                                      _currentIndex + 1,
+                                      duration: Duration(milliseconds: 500),
+                                      curve: Curves.ease);
+                                })
+                            : null,
+                      ),
                     const Spacer(),
                     IconButton(
                       tooltip: 'Settings',
