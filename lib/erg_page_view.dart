@@ -9,7 +9,20 @@ class ErgPageView extends StatefulWidget {
   _ErgPageViewState createState() => _ErgPageViewState();
 }
 
-class _ErgPageViewState extends State<ErgPageView> {
+class _ErgPageViewState extends State<ErgPageView>
+    with SingleTickerProviderStateMixin {
+  int _pageCount = 3;
+  int _currentIndex = 0;
+
+  late final TabController tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(
+        length: _pageCount, initialIndex: _currentIndex, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     final PageController pageController = PageController(initialPage: 0);
@@ -21,7 +34,8 @@ class _ErgPageViewState extends State<ErgPageView> {
           controller: pageController,
           onPageChanged: (newIndex) {
             setState(() {
-              // _currentIndex = newIndex;
+              _currentIndex = newIndex;
+              tabController.animateTo(newIndex);
             });
           },
           children: const <Widget>[
@@ -50,7 +64,10 @@ class _ErgPageViewState extends State<ErgPageView> {
                     //   onPressed: () {},
                     // ),
                     const Spacer(),
-                    //TabPageSelector
+                    TabPageSelector(
+                      color: Colors.black38,
+                      controller: tabController,
+                    ),
                     const Spacer(),
                     IconButton(
                       tooltip: 'Settings',
@@ -61,5 +78,11 @@ class _ErgPageViewState extends State<ErgPageView> {
                 )),
           ),
         ));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    tabController.dispose();
   }
 }
