@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:openergview/constants.dart';
 import 'package:openergview/erg_grid_view.dart';
+import 'package:openergview/settings_page_view.dart';
 
 import 'utils.dart';
 
@@ -104,7 +105,10 @@ class _ErgPageViewState extends State<ErgPageView>
                     IconButton(
                       tooltip: 'Settings',
                       icon: const Icon(Icons.settings),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => SettingsPageView()));
+                      },
                     ),
                   ],
                 )),
