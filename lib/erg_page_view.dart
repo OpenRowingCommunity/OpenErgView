@@ -61,11 +61,10 @@ class _ErgPageViewState extends State<ErgPageView>
                     color: Theme.of(context).colorScheme.onPrimary),
                 child: Row(
                   children: <Widget>[
-                    // IconButton(
-                    //   tooltip: 'Open navigation menu',
-                    //   icon: const Icon(Icons.menu),
-                    //   onPressed: () {},
-                    // ),
+                    Text(
+                      "status text",
+                      style: TextStyle(fontSize: 32.0, color: Colors.white),
+                    ),
                     const Spacer(),
                     if (isPointerDevice(context))
                       IconButton(
