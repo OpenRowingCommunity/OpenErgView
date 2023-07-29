@@ -12,12 +12,16 @@ class ErgGridView extends StatelessWidget {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
+    var size = MediaQuery.of(context).size;
+    // account for bottom bar height and padding
+    final double itemHeight = (size.height - 80 - 4) / 2;
+    final double itemWidth = size.width / 3;
     return Scaffold(
         body: GridView.count(
             crossAxisCount: 3,
+            childAspectRatio: (itemWidth / itemHeight),
             padding: const EdgeInsets.all(4),
-            mainAxisSpacing: 4,
-            crossAxisSpacing: 4,
             children: _buildGridTileList(6)));
   }
 
