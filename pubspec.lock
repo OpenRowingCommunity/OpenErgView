@@ -17,6 +17,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  c2bluetooth:
+    dependency: "direct main"
+    description:
+      path: "../c2bluetooth"
+      relative: true
+    source: path
+    version: "0.1.6"
   characters:
     dependency: transitive
     description:
@@ -41,6 +48,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.1"
+  csafe_fitness:
+    dependency: transitive
+    description:
+      name: csafe_fitness
+      sha256: "38ee8dfabdadffaad863918f989d7cea1b8ccba96cb85be64490f8c7449b2121"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -49,6 +64,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  equatable:
+    dependency: transitive
+    description:
+      name: equatable
+      sha256: c2b87cb7756efdf69892005af546c56c0b5037f54d2a88269b4f347a505e3ca2
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.5"
   fake_async:
     dependency: transitive
     description:
@@ -57,6 +80,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
+  fixnum:
+    dependency: transitive
+    description:
+      name: fixnum
+      sha256: "25517a4deb0c03aa0f32fd12db525856438902d9c16536311e76cdc57b31d7d1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -70,11 +101,27 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_reactive_ble:
+    dependency: transitive
+    description:
+      name: flutter_reactive_ble
+      sha256: dfcd3cca271a054121ef96fde0fdad43274a5a38b423fc3f519fd9edc43e42c9
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+  functional_data:
+    dependency: transitive
+    description:
+      name: functional_data
+      sha256: aefdec4365452283b2a7cf420a3169654d51d3e9553069a22d76680d7a9d7c3d
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   js:
     dependency: transitive
     description:
@@ -171,6 +218,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.5"
+  protobuf:
+    dependency: transitive
+    description:
+      name: protobuf
+      sha256: "01dd9bd0fa02548bf2ceee13545d4a0ec6046459d847b6b061d8a27237108a08"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
+  reactive_ble_mobile:
+    dependency: transitive
+    description:
+      name: reactive_ble_mobile
+      sha256: "2fdd8bcd00533f3e1e544030edeba723ce2dfdd24c3b22a04103b410b1272290"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.1"
+  reactive_ble_platform_interface:
+    dependency: transitive
+    description:
+      name: reactive_ble_platform_interface
+      sha256: d0c0041de584df5c697d276ae8c3ddc767b2c364ed29b4ae25126c57e4467cba
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.1"
   rxdart:
     dependency: "direct main"
     description:

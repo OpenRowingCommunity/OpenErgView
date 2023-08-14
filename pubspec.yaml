@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   permission_handler: ^10.4.3
   rxdart: ^0.27.7
+  c2bluetooth:
+    path: ../c2bluetooth/
 
 dev_dependencies:
   flutter_test:
