@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:c2bluetooth/c2bluetooth.dart';
 import 'package:flutter/material.dart';
 import 'package:openergview/constants.dart';
@@ -63,11 +65,57 @@ class _ErgPageViewState extends State<ErgPageView>
                     color: Theme.of(context).colorScheme.onPrimary),
                 child: Row(
                   children: <Widget>[
-                    Text(
-                      "status text",
-                      style: TextStyle(fontSize: 32.0, color: Colors.white),
-                    ),
-                    const Spacer(),
+                    StreamBuilder<ErgometerConnectionState>(
+                        stream: widget.erg.connectAndDiscover(),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<ErgometerConnectionState> snapshot) {
+                          if (snapshot.hasError) {
+                            return const Text(
+                              "Error",
+                              style:
+                                  TextStyle(fontSize: 16.0, color: Colors.red),
+                            );
+                          } else {
+                            switch (snapshot.connectionState) {
+                              case ConnectionState.none:
+                                return const Text(
+                                  "none",
+                                  style: TextStyle(
+                                      fontSize: 16.0, color: Colors.white),
+                                );
+                              case ConnectionState.waiting:
+                                return const CircularProgressIndicator();
+                              case ConnectionState.active:
+                              case ConnectionState.done:
+                                switch (snapshot.data) {
+                                  case ErgometerConnectionState.connecting:
+                                    return const Text(
+                                      "Connecting...",
+                                      style: TextStyle(
+                                          fontSize: 16.0, color: Colors.yellow),
+                                    );
+                                  case ErgometerConnectionState.connected:
+                                    return const Text(
+                                      "Connected to erg",
+                                      style: TextStyle(
+                                          fontSize: 16.0, color: Colors.green),
+                                    );
+                                  case ErgometerConnectionState.disconnected:
+                                    return const Text(
+                                      "Disconnected",
+                                      style: TextStyle(
+                                          fontSize: 16.0, color: Colors.red),
+                                    );
+                                  default:
+                                    return const Text(
+                                      "Unknown",
+                                      style: TextStyle(
+                                          fontSize: 16.0, color: Colors.white),
+                                    );
+                                }
+                            }
+                          }
+                        }),
                     if (isPointerDevice(context))
                       IconButton(
                         tooltip: 'Previous',
