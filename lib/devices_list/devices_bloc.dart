@@ -129,8 +129,6 @@ class DevicesBloc {
     // Fimber.d("Ble start scan");
     _scanSubscription = _bleManager.startErgScan().listen((ergometer) {
       if (!bleDevices.contains(ergometer)) {
-        // Fimber.d(
-        print('found new device ${ergometer.name} (${ergometer.id})');
         bleDevices.add(ergometer);
         _visibleDevicesController.add(bleDevices.sublist(0));
       }
