@@ -1,3 +1,4 @@
+import 'package:c2bluetooth/c2bluetooth.dart';
 import 'package:flutter/material.dart';
 import 'package:openergview/constants.dart';
 import 'package:openergview/erg_grid_view.dart';
@@ -6,7 +7,8 @@ import 'package:openergview/settings_page_view.dart';
 import 'utils.dart';
 
 class ErgPageView extends StatefulWidget {
-  ErgPageView({Key? key}) : super(key: key);
+  final Ergometer erg;
+  ErgPageView({Key? key, required this.erg}) : super(key: key);
 
   @override
   _ErgPageViewState createState() => _ErgPageViewState();

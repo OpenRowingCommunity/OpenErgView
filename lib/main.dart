@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'devices_list/devices_bloc_provider.dart';
+import 'devices_list/devices_list_view.dart';
 import 'erg_grid_view.dart';
 import 'erg_page_view.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -41,7 +45,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: ErgPageView(),
+      initialRoute: "/",
+      routes: <String, WidgetBuilder>{
+        "/": (context) => DevicesBlocProvider(child: DevicesListScreen()),
+        // "/details": (context) => ErgPageView(),
+      },
+      navigatorObservers: [routeObserver],
     );
   }
 }
