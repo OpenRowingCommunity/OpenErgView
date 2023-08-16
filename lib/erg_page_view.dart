@@ -74,7 +74,15 @@ class _ErgPageViewState extends State<ErgPageView>
           children: <Widget>[
             ErgGridView(
               children: [
-                DataTile(title: "test", defaultValue: 1),
+                DataTile(
+                    title: "distance",
+                    defaultValue: 1,
+                    stream: widget.erg
+                        .monitorForData({"general.distance"}).map((event) {
+                      var data = event["general.distance"] as double;
+                      print(data);
+                      return data;
+                    })),
                 DataTile(title: "test", defaultValue: 2),
                 DataTile(title: "test", defaultValue: 3),
                 DataTile(title: "test", defaultValue: 4),
