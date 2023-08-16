@@ -21,6 +21,13 @@ class _ErgPageViewState extends State<ErgPageView>
   int _pageCount = 3;
   int _currentIndex = 0;
 
+  ErgometerConnectionState lastConnectionState =
+      ErgometerConnectionState.disconnected;
+
+  late Stream<ErgometerConnectionState> _ergConnectionStatusStream;
+
+  late StreamSubscription<ErgometerConnectionState> _ergConnectionStatus;
+
   late final TabController tabController;
 
   @override
@@ -28,6 +35,24 @@ class _ErgPageViewState extends State<ErgPageView>
     super.initState();
     tabController = TabController(
         length: _pageCount, initialIndex: _currentIndex, vsync: this);
+
+    _ergConnectionStatusStream =
+        widget.erg.connectAndDiscover().asBroadcastStream(
+      onCancel: (controller) {
+        print('Stream paused');
+        controller.pause();
+      },
+      onListen: (controller) async {
+        if (controller.isPaused) {
+          print('Stream resumed');
+          controller.resume();
+        }
+      },
+    );
+    _ergConnectionStatus = _ergConnectionStatusStream
+        .listen((ErgometerConnectionState connectionState) {
+      lastConnectionState = connectionState;
+    });
   }
 
   @override
@@ -66,7 +91,8 @@ class _ErgPageViewState extends State<ErgPageView>
                 child: Row(
                   children: <Widget>[
                     StreamBuilder<ErgometerConnectionState>(
-                        stream: widget.erg.connectAndDiscover(),
+                        stream: _ergConnectionStatusStream,
+                        initialData: lastConnectionState,
                         builder: (BuildContext context,
                             AsyncSnapshot<ErgometerConnectionState> snapshot) {
                           if (snapshot.hasError) {
