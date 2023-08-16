@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:openergview/data_tile.dart';
 
 class ErgGridView extends StatelessWidget {
-  const ErgGridView({super.key});
+  final List<DataTile> children;
+
+  const ErgGridView({super.key, required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +24,6 @@ class ErgGridView extends StatelessWidget {
             crossAxisCount: 3,
             childAspectRatio: (itemWidth / itemHeight),
             padding: const EdgeInsets.all(4),
-            children: _buildGridTileList(6)));
+            children: children));
   }
-
-  // The images are saved with names pic0.jpg, pic1.jpg...pic29.jpg.
-// The List.generate() constructor allows an easy way to create
-// a list when objects have a predictable naming pattern.
-  List<DataTile> _buildGridTileList(int count) =>
-      List.generate(count, (i) => DataTile(title: "test", value: i.toDouble()));
 }
