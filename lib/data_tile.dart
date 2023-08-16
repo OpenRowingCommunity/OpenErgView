@@ -5,12 +5,16 @@ import 'package:openergview/constants.dart';
 
 class DataTile extends StatefulWidget {
   final String title;
-  final double value;
+  final double defaultValue;
   final String? unit;
   final Stream<double>? stream;
 
   DataTile(
-      {Key? key, this.unit, this.title = "", this.value = 0.0, this.stream})
+      {Key? key,
+      this.unit,
+      this.title = "",
+      this.defaultValue = 0.0,
+      this.stream})
       : super(key: key);
 
   @override
@@ -29,7 +33,7 @@ class _DataTileState extends State<DataTile> {
             Text(widget.title),
             StreamBuilder<double>(
                 stream: widget.stream,
-                initialData: widget.value,
+                initialData: widget.defaultValue,
                 builder:
                     (BuildContext context, AsyncSnapshot<double> snapshot) {
                   if (snapshot.hasError) {
@@ -38,7 +42,7 @@ class _DataTileState extends State<DataTile> {
                       style: TextStyle(color: Colors.red),
                     );
                   } else {
-                    double data = snapshot.data ?? widget.value;
+                    double data = snapshot.data ?? widget.defaultValue;
                     return Text(data.toStringAsPrecision(4));
                   }
                 }),
