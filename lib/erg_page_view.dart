@@ -6,6 +6,7 @@ import 'package:openergview/constants.dart';
 import 'package:openergview/erg_grid_view.dart';
 import 'package:openergview/settings_page_view.dart';
 
+import 'data_tile.dart';
 import 'utils.dart';
 
 class ErgPageView extends StatefulWidget {
@@ -70,12 +71,30 @@ class _ErgPageViewState extends State<ErgPageView>
               tabController.animateTo(newIndex);
             });
           },
-          children: const <Widget>[
-            ErgGridView(),
+          children: <Widget>[
+            ErgGridView(
+              children: [
+                DataTile(title: "test", defaultValue: 1),
+                DataTile(title: "test", defaultValue: 2),
+                DataTile(title: "test", defaultValue: 3),
+                DataTile(title: "test", defaultValue: 4),
+                DataTile(title: "test", defaultValue: 5),
+                DataTile(title: "test", defaultValue: 6)
+              ],
+            ),
             Center(
               child: Text('First Page'),
             ),
-            ErgGridView()
+            ErgGridView(
+              children: [
+                DataTile(title: "test", defaultValue: 1),
+                DataTile(title: "test", defaultValue: 2),
+                DataTile(title: "test", defaultValue: 3),
+                DataTile(title: "test", defaultValue: 4),
+                DataTile(title: "test", defaultValue: 5),
+                DataTile(title: "test", defaultValue: 6)
+              ],
+            )
           ],
         ),
         bottomNavigationBar: Container(
