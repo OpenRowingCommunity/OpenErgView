@@ -84,11 +84,25 @@ class _ErgPageViewState extends State<ErgPageView>
                           print(data);
                           return data;
                         })),
-                    DataTile(title: "test", defaultValue: 2),
-                    DataTile(title: "test", defaultValue: 3),
-                    DataTile(title: "test", defaultValue: 14),
-                    DataTile(title: "test", defaultValue: 15),
-                    DataTile(title: "test", defaultValue: 16)
+                    DataTile(
+                      title: "Drive Length",
+                      defaultValue: 1.27,
+                      unit: "m",
+                      decimals: 2,
+                    ),
+                    DataTile(
+                      title: "Average Force",
+                      defaultValue: 264,
+                      unit: "lb",
+                    ),
+                    DataTile(title: "Drag Factor", defaultValue: 218),
+                    DataTile(
+                      title: "Drive Speed",
+                      defaultValue: 12.10,
+                      unit: "m/s",
+                      decimals: 2,
+                    ),
+                    DataTile(title: "Peak Force", defaultValue: 341, unit: "lb")
                   ],
                 ),
                 Center(
