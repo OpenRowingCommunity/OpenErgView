@@ -56,10 +56,15 @@ class _DataTileState extends State<DataTile> {
                   }
                 }),
             if (widget.unit != null)
-              Text(
-                widget.unit!,
-                style: const TextStyle(color: Colors.white),
-              ),
+              Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                    child: Text(
+                      widget.unit!,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ))
           ],
         ));
   }
