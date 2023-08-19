@@ -191,6 +191,7 @@ class _ErgPageViewState extends State<ErgPageView>
                                 }
                               }
                             }),
+                        const Spacer(),
                         if (isPointerDevice(context))
                           IconButton(
                             tooltip: 'Previous',
