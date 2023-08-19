@@ -18,9 +18,9 @@ class ErgStaggeredView extends StatelessWidget {
     return Scaffold(
         body: Row(
       children: <Widget>[
-        SizedBox(
+        Container(
             width: size.width * 2 / 3,
-            height: size.height - 80 - 4,
+            padding: const EdgeInsets.fromLTRB(2, 2, 0, 2),
             child: Column(children: <Widget>[
               Row(children: <Widget>[
                 Expanded(
