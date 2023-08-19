@@ -7,6 +7,8 @@ import 'package:openergview/erg_grid_view.dart';
 import 'package:openergview/settings_page_view.dart';
 
 import 'data_tile.dart';
+import 'devices_list/devices_bloc_provider.dart';
+import 'devices_list/devices_list_view.dart';
 import 'utils.dart';
 
 class ErgPageView extends StatefulWidget {
@@ -236,6 +238,23 @@ class _ErgPageViewState extends State<ErgPageView>
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => SettingsPageView()));
+                          },
+                        ),
+                        IconButton(
+                          tooltip: 'Connect',
+                          icon: const Icon(Icons.bluetooth),
+                          onPressed: () async {
+                            final result = await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DevicesBlocProvider(
+                                      child: DevicesListScreen()),
+                                ));
+                            print(result);
+                            // setState(() {
+                            //   widget.erg = result;
+                            //   //TODO, use a provider or smth
+                            // });
                           },
                         ),
                       ],

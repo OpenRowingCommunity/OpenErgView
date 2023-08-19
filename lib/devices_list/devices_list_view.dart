@@ -133,13 +133,7 @@ class DevicesList extends ListView {
     return () {
       // Fimber.d("clicked device: ${bleDevice.name}");
       // devicesBloc.devicePicker.add(bleDevice);
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ErgPageView(
-              erg: bleDevice,
-            ),
-          ));
+      Navigator.pop(context, bleDevice);
     };
   }
 
