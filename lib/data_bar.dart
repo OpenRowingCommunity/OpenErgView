@@ -27,6 +27,7 @@ class _DataBarState extends State<DataBar> {
             color: Colors.blueAccent.shade100,
             border: Border.all(style: BorderStyle.solid, color: Colors.white)),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             if (widget.icon != null)
               Icon(
