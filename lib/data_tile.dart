@@ -7,12 +7,14 @@ class DataTile extends StatefulWidget {
   final String title;
   final double defaultValue;
   final String? unit;
+  final int decimals;
   final Stream<double>? stream;
 
   DataTile(
       {Key? key,
       this.unit,
       this.title = "",
+      this.decimals = 0,
       this.defaultValue = 0.0,
       this.stream})
       : super(key: key);
@@ -43,7 +45,7 @@ class _DataTileState extends State<DataTile> {
                     );
                   } else {
                     double data = snapshot.data ?? widget.defaultValue;
-                    return Text(data.toStringAsPrecision(4));
+                    return Text(data.toStringAsFixed(widget.decimals));
                   }
                 }),
             if (widget.unit != null) Text(widget.unit!),
