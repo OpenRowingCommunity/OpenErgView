@@ -8,13 +8,6 @@ class ErgGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-
     var size = MediaQuery.of(context).size;
     // account for bottom bar height and padding
     final double itemHeight = (size.height - 80 - 4) / 2;
