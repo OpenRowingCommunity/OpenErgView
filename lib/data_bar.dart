@@ -28,7 +28,13 @@ class _DataBarState extends State<DataBar> {
             border: Border.all(style: BorderStyle.solid, color: Colors.white)),
         child: Row(
           children: [
-            // widget.icon ?? Spacer(),
+            if (widget.icon != null)
+              Icon(
+                widget.icon!,
+                color: Colors.red,
+                size: 24.0,
+                semanticLabel: 'Heart Rate',
+              ),
             StreamBuilder<double>(
                 stream: widget.stream,
                 initialData: widget.defaultValue,

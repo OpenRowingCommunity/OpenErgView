@@ -34,8 +34,7 @@ class ErgStaggeredView extends StatelessWidget {
                 Expanded(flex: 2, child: DataBar(defaultValue: 2000)),
                 Expanded(
                     flex: 1,
-                    child: DataBar(
-                        icon: Icons.heart_broken_outlined, defaultValue: 32))
+                    child: DataBar(icon: Icons.favorite, defaultValue: 32))
               ]),
               Row(children: <Widget>[
                 Expanded(child: DataBar(defaultValue: 2000, unit: "ave/500"))
