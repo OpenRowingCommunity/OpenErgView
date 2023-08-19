@@ -152,7 +152,7 @@ class _ErgPageViewState extends State<ErgPageView>
                                 switch (snapshot.connectionState) {
                                   case ConnectionState.none:
                                     return const Text(
-                                      "none",
+                                      "Please Connect PM",
                                       style: TextStyle(
                                           fontSize: 16.0, color: Colors.white),
                                     );
