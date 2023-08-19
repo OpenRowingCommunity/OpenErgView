@@ -50,7 +50,7 @@ class _DataTileState extends State<DataTile> {
                     double data = snapshot.data ?? widget.defaultValue;
                     return Text(data.toStringAsFixed(widget.decimals),
                         style: const TextStyle(
-                            fontSize: 48,
+                            fontSize: 52,
                             fontWeight: FontWeight.bold,
                             color: Colors.white));
                   }
