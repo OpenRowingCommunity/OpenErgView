@@ -59,7 +59,10 @@ class _DataBarState extends State<DataBar> {
                 }),
             Text(
               widget.unit ?? "",
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16),
             ),
           ],
         ));
