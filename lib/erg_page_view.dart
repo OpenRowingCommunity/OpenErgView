@@ -9,6 +9,7 @@ import 'package:openergview/settings_page_view.dart';
 import 'data_tile.dart';
 import 'devices_list/devices_bloc_provider.dart';
 import 'devices_list/devices_list_view.dart';
+import 'erg_staggered_view.dart';
 import 'utils.dart';
 
 class ErgPageView extends StatefulWidget {
@@ -78,6 +79,23 @@ class _ErgPageViewState extends State<ErgPageView>
                 });
               },
               children: <Widget>[
+                ErgStaggeredView(children: [
+                  DataTile(
+                      title: "distance",
+                      defaultValue: 1,
+                      stream: widget.erg
+                          ?.monitorForData({"general.distance"}).map((event) {
+                        var data = event["general.distance"] as double;
+                        print(data);
+                        return data;
+                      })),
+                  DataTile(
+                    title: "Drive Length",
+                    defaultValue: 1.27,
+                    unit: "m",
+                    decimals: 2,
+                  )
+                ]),
                 ErgGridView(
                   children: [
                     DataTile(
