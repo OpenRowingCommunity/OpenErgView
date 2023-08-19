@@ -34,7 +34,7 @@ class _DataTileState extends State<DataTile> {
           children: [
             Text(
               widget.title,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white, fontSize: 18),
             ),
             StreamBuilder<double>(
                 stream: widget.stream,
