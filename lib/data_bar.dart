@@ -35,7 +35,9 @@ class _DataBarState extends State<DataBar> {
                 color: Colors.red,
                 size: 24.0,
                 semanticLabel: 'Heart Rate',
-              ),
+              )
+            else
+              SizedBox(width: 50),
             StreamBuilder<double>(
                 stream: widget.stream,
                 initialData: widget.defaultValue,
