@@ -10,8 +10,6 @@ void main() {
   runApp(const MyApp());
 }
 
-final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -25,18 +23,12 @@ class MyApp extends StatelessWidget {
     ]);
 
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
-      ),
-      initialRoute: "/",
-      routes: <String, WidgetBuilder>{
-        "/": (context) => DevicesBlocProvider(child: DevicesListScreen()),
-        // "/details": (context) => ErgPageView(),
-      },
-      navigatorObservers: [routeObserver],
-    );
+        title: 'OpenErgView',
+        theme: ThemeData(
+          // This is the theme of your application.
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          useMaterial3: true,
+        ),
+        home: ErgPageView());
   }
 }

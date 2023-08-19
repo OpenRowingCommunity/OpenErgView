@@ -10,8 +10,8 @@ import 'data_tile.dart';
 import 'utils.dart';
 
 class ErgPageView extends StatefulWidget {
-  final Ergometer erg;
-  ErgPageView({Key? key, required this.erg}) : super(key: key);
+  final Ergometer? erg;
+  ErgPageView({Key? key, this.erg}) : super(key: key);
 
   @override
   _ErgPageViewState createState() => _ErgPageViewState();
@@ -25,9 +25,9 @@ class _ErgPageViewState extends State<ErgPageView>
   ErgometerConnectionState lastConnectionState =
       ErgometerConnectionState.disconnected;
 
-  late Stream<ErgometerConnectionState> _ergConnectionStatusStream;
+  Stream<ErgometerConnectionState>? _ergConnectionStatusStream;
 
-  late StreamSubscription<ErgometerConnectionState> _ergConnectionStatus;
+  StreamSubscription<ErgometerConnectionState>? _ergConnectionStatus;
 
   late final TabController tabController;
 
@@ -37,23 +37,26 @@ class _ErgPageViewState extends State<ErgPageView>
     tabController = TabController(
         length: _pageCount, initialIndex: _currentIndex, vsync: this);
 
-    _ergConnectionStatusStream =
-        widget.erg.connectAndDiscover().asBroadcastStream(
-      onCancel: (controller) {
-        print('Stream paused');
-        controller.pause();
-      },
-      onListen: (controller) async {
-        if (controller.isPaused) {
-          print('Stream resumed');
-          controller.resume();
-        }
-      },
-    );
-    _ergConnectionStatus = _ergConnectionStatusStream
-        .listen((ErgometerConnectionState connectionState) {
-      lastConnectionState = connectionState;
-    });
+    if (widget.erg != null) {
+      _ergConnectionStatusStream =
+          widget.erg?.connectAndDiscover().asBroadcastStream(
+        onCancel: (controller) {
+          print('Stream paused');
+          controller.pause();
+        },
+        onListen: (controller) async {
+          if (controller.isPaused) {
+            print('Stream resumed');
+            controller.resume();
+          }
+        },
+      );
+
+      _ergConnectionStatus = _ergConnectionStatusStream
+          ?.listen((ErgometerConnectionState connectionState) {
+        lastConnectionState = connectionState;
+      });
+    }
   }
 
   @override
@@ -79,7 +82,7 @@ class _ErgPageViewState extends State<ErgPageView>
                         title: "distance",
                         defaultValue: 1,
                         stream: widget.erg
-                            .monitorForData({"general.distance"}).map((event) {
+                            ?.monitorForData({"general.distance"}).map((event) {
                           var data = event["general.distance"] as double;
                           print(data);
                           return data;
