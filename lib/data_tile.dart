@@ -32,7 +32,10 @@ class _DataTileState extends State<DataTile> {
             border: Border.all(style: BorderStyle.solid, color: Colors.white)),
         child: Column(
           children: [
-            Text(widget.title),
+            Text(
+              widget.title,
+              style: const TextStyle(color: Colors.white),
+            ),
             StreamBuilder<double>(
                 stream: widget.stream,
                 initialData: widget.defaultValue,
@@ -45,10 +48,18 @@ class _DataTileState extends State<DataTile> {
                     );
                   } else {
                     double data = snapshot.data ?? widget.defaultValue;
-                    return Text(data.toStringAsFixed(widget.decimals));
+                    return Text(data.toStringAsFixed(widget.decimals),
+                        style: const TextStyle(
+                            fontSize: 48,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white));
                   }
                 }),
-            if (widget.unit != null) Text(widget.unit!),
+            if (widget.unit != null)
+              Text(
+                widget.unit!,
+                style: const TextStyle(color: Colors.white),
+              ),
           ],
         ));
   }
