@@ -23,7 +23,7 @@ class ErgGridView extends StatelessWidget {
         body: GridView.count(
             crossAxisCount: 3,
             childAspectRatio: (itemWidth / itemHeight),
-            padding: const EdgeInsets.all(4),
+            padding: const EdgeInsets.all(2),
             children: children));
   }
 }

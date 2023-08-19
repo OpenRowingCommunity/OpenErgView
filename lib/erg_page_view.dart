@@ -106,6 +106,7 @@ class _ErgPageViewState extends State<ErgPageView>
           ],
         ),
         bottomNavigationBar: Container(
+          height: 58,
           decoration: BoxDecoration(
             gradient: getDarkGradient(context),
             color: Colors.indigo,
