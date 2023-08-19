@@ -85,9 +85,9 @@ class _ErgPageViewState extends State<ErgPageView>
                     })),
                 DataTile(title: "test", defaultValue: 2),
                 DataTile(title: "test", defaultValue: 3),
-                DataTile(title: "test", defaultValue: 4),
-                DataTile(title: "test", defaultValue: 5),
-                DataTile(title: "test", defaultValue: 6)
+                DataTile(title: "test", defaultValue: 14),
+                DataTile(title: "test", defaultValue: 15),
+                DataTile(title: "test", defaultValue: 16)
               ],
             ),
             Center(
