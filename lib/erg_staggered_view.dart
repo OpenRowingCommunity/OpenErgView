@@ -25,30 +25,46 @@ class ErgStaggeredView extends StatelessWidget {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Row(children: <Widget>[
-                    Expanded(
-                        flex: 2, child: DataBar(defaultValue: 2000, unit: "m")),
-                    Expanded(
-                        flex: 1, child: DataBar(defaultValue: 32, unit: "s/m"))
-                  ]),
-                  Row(children: <Widget>[
-                    Expanded(
-                        child: DataBar(
-                      defaultValue: 2000,
-                      unit: "/500m",
-                      fontSize: 64,
-                    ))
-                  ]),
-                  Row(children: <Widget>[
-                    Expanded(flex: 2, child: DataBar(defaultValue: 2000)),
-                    Expanded(
-                        flex: 1,
-                        child: DataBar(icon: Icons.favorite, defaultValue: 32))
-                  ]),
-                  Row(children: <Widget>[
-                    Expanded(
-                        child: DataBar(defaultValue: 2000, unit: "ave/500"))
-                  ]),
+                  Expanded(
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                        Expanded(
+                            flex: 2,
+                            child: DataBar(defaultValue: 2000, unit: "m")),
+                        Expanded(
+                            flex: 1,
+                            child: DataBar(defaultValue: 32, unit: "s/m"))
+                      ])),
+                  Expanded(
+                      flex: 2,
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            Expanded(
+                                child: DataBar(
+                              defaultValue: 2000,
+                              unit: "/500m",
+                              fontSize: 64,
+                            ))
+                          ])),
+                  Expanded(
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                        Expanded(flex: 2, child: DataBar(defaultValue: 2000)),
+                        Expanded(
+                            flex: 1,
+                            child:
+                                DataBar(icon: Icons.favorite, defaultValue: 32))
+                      ])),
+                  Expanded(
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                        Expanded(
+                            child: DataBar(defaultValue: 2000, unit: "ave/500"))
+                      ])),
                 ])),
         SizedBox(
           width: itemWidth,
