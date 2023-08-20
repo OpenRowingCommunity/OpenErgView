@@ -3,9 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:openergview/src/ergometerstore.dart';
 import 'package:provider/provider.dart';
 
-import 'devices_list/devices_bloc_provider.dart';
-import 'devices_list/devices_list_view.dart';
-import 'erg_grid_view.dart';
 import 'erg_page_view.dart';
 
 void main() {
