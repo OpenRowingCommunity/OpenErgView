@@ -136,7 +136,8 @@ class DevicesList extends ListView {
     return () {
       // Fimber.d("clicked device: ${bleDevice.name}");
       // devicesBloc.devicePicker.add(bleDevice);
-      ErgometerStore? ergstore = Provider.of<ErgometerStore>(context);
+      ErgometerStore? ergstore =
+          Provider.of<ErgometerStore>(context, listen: false);
       //assign erg if it is null
       ergstore.erg ??= bleDevice;
       // TODO: handle if it is not null (or maybe that happens when the erg disconnects?)
