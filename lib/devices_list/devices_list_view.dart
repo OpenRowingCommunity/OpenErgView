@@ -115,6 +115,7 @@ class DeviceListScreenState extends State<DevicesListScreen> {
   }
 }
 
+///depends on [ErgometerStore]
 class DevicesList extends ListView {
   DevicesList(DevicesBloc devicesBloc, List<Ergometer>? devices)
       : super.separated(

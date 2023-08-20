@@ -21,6 +21,7 @@ class ErgPageView extends StatefulWidget {
   _ErgPageViewState createState() => _ErgPageViewState();
 }
 
+///depends on [ErgometerStore]
 class _ErgPageViewState extends State<ErgPageView>
     with SingleTickerProviderStateMixin {
   int _pageCount = 3;
