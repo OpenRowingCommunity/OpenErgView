@@ -9,7 +9,8 @@ import 'erg_grid_view.dart';
 import 'erg_page_view.dart';
 
 void main() {
-  runApp(Provider(create: (_) => ErgometerStore(), child: const MyApp()));
+  runApp(ChangeNotifierProvider(
+      create: (_) => ErgometerStore(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
