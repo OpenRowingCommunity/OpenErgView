@@ -264,24 +264,6 @@ class _ErgPageViewState extends State<ErgPageView>
                                 builder: (context) => SettingsPageView()));
                           },
                         ),
-                        IconButton(
-                          tooltip: 'Connect',
-                          padding: const EdgeInsets.all(0),
-                          icon: const Icon(Icons.bluetooth),
-                          onPressed: () async {
-                            final result = await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => DevicesBlocProvider(
-                                      child: DevicesListScreen()),
-                                ));
-                            print(result);
-                            // setState(() {
-                            //   widget.erg = result;
-                            //   //TODO, use a provider or smth
-                            // });
-                          },
-                        ),
                       ],
                     )),
               ),
