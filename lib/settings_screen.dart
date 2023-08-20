@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:openergview/constants.dart';
 
+import 'devices_list/devices_bloc_provider.dart';
+import 'devices_list/devices_list_view.dart';
 import 'utils.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -20,6 +22,12 @@ class SettingsScreen extends StatelessWidget {
               tiles: <SettingsTile>[
                 SettingsTile.navigation(
                   title: Text("Connect to a PM5"),
+                  onPressed: (context) => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            DevicesBlocProvider(child: DevicesListScreen()),
+                      )),
                 ),
               ],
             ),
