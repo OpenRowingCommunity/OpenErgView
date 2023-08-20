@@ -4,7 +4,7 @@ import 'package:c2bluetooth/c2bluetooth.dart';
 import 'package:flutter/material.dart';
 import 'package:openergview/constants.dart';
 import 'package:openergview/erg_grid_view.dart';
-import 'package:openergview/settings_page_view.dart';
+import 'package:openergview/settings_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'data_tile.dart';
