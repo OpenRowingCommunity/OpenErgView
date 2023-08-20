@@ -3,6 +3,8 @@ import 'dart:async';
 // import 'package:fimber/fimber.dart';
 import 'package:c2bluetooth/c2bluetooth.dart';
 import 'package:flutter/material.dart';
+import 'package:openergview/src/ergometerstore.dart';
+import 'package:provider/provider.dart';
 
 import '../erg_page_view.dart';
 // import '../model/ble_device.dart';
@@ -14,6 +16,8 @@ import 'devices_bloc_provider.dart';
 typedef DeviceTapListener = void Function();
 
 class DevicesListScreen extends StatefulWidget {
+  DevicesListScreen({super.key});
+
   @override
   State<DevicesListScreen> createState() => DeviceListScreenState();
 }
@@ -113,6 +117,7 @@ class DeviceListScreenState extends State<DevicesListScreen> {
   }
 }
 
+///depends on [ErgometerStore]
 class DevicesList extends ListView {
   DevicesList(DevicesBloc devicesBloc, List<Ergometer>? devices)
       : super.separated(
@@ -133,7 +138,12 @@ class DevicesList extends ListView {
     return () {
       // Fimber.d("clicked device: ${bleDevice.name}");
       // devicesBloc.devicePicker.add(bleDevice);
-      Navigator.pop(context, bleDevice);
+      ErgometerStore? ergstore =
+          Provider.of<ErgometerStore>(context, listen: false);
+      //assign erg if it is null
+      ergstore.erg ??= bleDevice;
+      // TODO: handle if it is not null (or maybe that happens when the erg disconnects?)
+      Navigator.pop(context);
     };
   }
 

@@ -4,22 +4,24 @@ import 'package:c2bluetooth/c2bluetooth.dart';
 import 'package:flutter/material.dart';
 import 'package:openergview/constants.dart';
 import 'package:openergview/erg_grid_view.dart';
-import 'package:openergview/settings_page_view.dart';
+import 'package:openergview/settings_screen.dart';
+import 'package:provider/provider.dart';
 
 import 'data_tile.dart';
 import 'devices_list/devices_bloc_provider.dart';
 import 'devices_list/devices_list_view.dart';
 import 'erg_staggered_view.dart';
+import 'src/ergometerstore.dart';
 import 'utils.dart';
 
 class ErgPageView extends StatefulWidget {
-  final Ergometer? erg;
-  ErgPageView({Key? key, this.erg}) : super(key: key);
+  ErgPageView({super.key});
 
   @override
   _ErgPageViewState createState() => _ErgPageViewState();
 }
 
+///depends on [ErgometerStore]
 class _ErgPageViewState extends State<ErgPageView>
     with SingleTickerProviderStateMixin {
   int _pageCount = 3;
@@ -32,6 +34,8 @@ class _ErgPageViewState extends State<ErgPageView>
 
   StreamSubscription<ErgometerConnectionState>? _ergConnectionStatus;
 
+  late ErgometerStore? ergstore;
+
   late final TabController tabController;
 
   @override
@@ -39,10 +43,17 @@ class _ErgPageViewState extends State<ErgPageView>
     super.initState();
     tabController = TabController(
         length: _pageCount, initialIndex: _currentIndex, vsync: this);
+  }
 
-    if (widget.erg != null) {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    ergstore = Provider.of<ErgometerStore>(context);
+
+    if (ergstore != null && ergstore!.erg != null) {
       _ergConnectionStatusStream =
-          widget.erg?.connectAndDiscover().asBroadcastStream(
+          ergstore!.erg!.connectAndDiscover().asBroadcastStream(
         onCancel: (controller) {
           print('Stream paused');
           controller.pause();
@@ -83,7 +94,7 @@ class _ErgPageViewState extends State<ErgPageView>
                   DataTile(
                       title: "distance",
                       defaultValue: 1,
-                      stream: widget.erg
+                      stream: ergstore?.erg
                           ?.monitorForData({"general.distance"}).map((event) {
                         var data = event["general.distance"] as double;
                         print(data);
@@ -101,7 +112,7 @@ class _ErgPageViewState extends State<ErgPageView>
                     DataTile(
                         title: "distance",
                         defaultValue: 1,
-                        stream: widget.erg
+                        stream: ergstore?.erg
                             ?.monitorForData({"general.distance"}).map((event) {
                           var data = event["general.distance"] as double;
                           print(data);
@@ -256,25 +267,7 @@ class _ErgPageViewState extends State<ErgPageView>
                           icon: const Icon(Icons.settings),
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => SettingsPageView()));
-                          },
-                        ),
-                        IconButton(
-                          tooltip: 'Connect',
-                          padding: const EdgeInsets.all(0),
-                          icon: const Icon(Icons.bluetooth),
-                          onPressed: () async {
-                            final result = await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => DevicesBlocProvider(
-                                      child: DevicesListScreen()),
-                                ));
-                            print(result);
-                            // setState(() {
-                            //   widget.erg = result;
-                            //   //TODO, use a provider or smth
-                            // });
+                                builder: (context) => SettingsScreen()));
                           },
                         ),
                       ],
