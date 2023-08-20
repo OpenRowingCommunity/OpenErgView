@@ -1,16 +1,12 @@
 # openergview
 
-A new Flutter project.
+![A screenshot of a work-in-progress version of the app](demo.png)
 
-## Getting Started
+An open source Flutter app for viewing data from a Concept2 indoor rowing machine. Inspired by the original ErgData app.
 
-This project is a starting point for a Flutter application.
+This is a project that is created as a more advanced demo application for showing off the behavior of the `c2bluetooth` library. This is a library that aims to make it easy for developers to build flutter apps that integrate with the data from Concept2 PM5 rowing machines
 
-A few resources to get you started if this is your first Flutter project:
+## Building
+Build process is just like any flutter app
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Tested primarily on Android and Linux. Results on other platforms may vary.
