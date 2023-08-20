@@ -10,7 +10,9 @@ class ErgGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     // account for bottom bar height and padding
-    final double itemHeight = (size.height - 80 - 4) / 2;
+    double spaceHeight = size.height - kBottomNavigationBarHeight;
+
+    final double itemHeight = spaceHeight / 2;
     final double itemWidth = size.width / 3;
     return Scaffold(
         body: GridView.count(
