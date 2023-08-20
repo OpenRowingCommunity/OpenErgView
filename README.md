@@ -2,7 +2,7 @@
 
 [![Matrix](https://img.shields.io/matrix/openrowing:matrix.org?label=openrowing%20matrix%20space)](https://matrix.to/#/#openrowing:matrix.org)
 
-![A screenshot of a work-in-progress version of the app](demo.png)
+![A screenshot of a work-in-progress version of the app](demo.gif)
 
 An open source Flutter app for viewing data from a Concept2 indoor rowing machine. Inspired by the original ErgData app.
 
