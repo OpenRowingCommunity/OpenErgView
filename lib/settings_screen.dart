@@ -3,8 +3,8 @@ import 'package:openergview/constants.dart';
 
 import 'utils.dart';
 
-class SettingsPageView extends StatelessWidget {
-  const SettingsPageView({Key? key}) : super(key: key);
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

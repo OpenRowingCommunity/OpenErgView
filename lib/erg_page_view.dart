@@ -262,7 +262,7 @@ class _ErgPageViewState extends State<ErgPageView>
                           icon: const Icon(Icons.settings),
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => SettingsPageView()));
+                                builder: (context) => SettingsScreen()));
                           },
                         ),
                       ],
