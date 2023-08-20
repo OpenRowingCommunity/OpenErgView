@@ -24,6 +24,7 @@ class ErgPageView extends StatefulWidget {
 ///depends on [ErgometerStore]
 class _ErgPageViewState extends State<ErgPageView>
     with SingleTickerProviderStateMixin {
+  //TODO: remove this magic number somehow
   int _pageCount = 3;
   int _currentIndex = 0;
 
