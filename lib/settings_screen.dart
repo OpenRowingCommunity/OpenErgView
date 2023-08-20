@@ -20,6 +20,8 @@ class SettingsScreen extends StatelessWidget {
             SettingsSection(
               title: Text('Connection'),
               tiles: <SettingsTile>[
+
+                //TODO: if theres a connected erg, show a disconnect button instead
                 SettingsTile.navigation(
                   title: Text("Connect to a PM5"),
                   onPressed: (context) => Navigator.push(
