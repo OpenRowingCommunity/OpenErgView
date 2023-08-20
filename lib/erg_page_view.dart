@@ -43,6 +43,11 @@ class _ErgPageViewState extends State<ErgPageView>
     super.initState();
     tabController = TabController(
         length: _pageCount, initialIndex: _currentIndex, vsync: this);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
     ergstore = Provider.of<ErgometerStore>(context);
 
