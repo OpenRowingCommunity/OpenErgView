@@ -252,6 +252,7 @@ class _ErgPageViewState extends State<ErgPageView>
                         const Spacer(),
                         IconButton(
                           tooltip: 'Settings',
+                          padding: const EdgeInsets.all(0),
                           icon: const Icon(Icons.settings),
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
@@ -260,6 +261,7 @@ class _ErgPageViewState extends State<ErgPageView>
                         ),
                         IconButton(
                           tooltip: 'Connect',
+                          padding: const EdgeInsets.all(0),
                           icon: const Icon(Icons.bluetooth),
                           onPressed: () async {
                             final result = await Navigator.push(
