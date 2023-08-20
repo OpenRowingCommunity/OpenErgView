@@ -10,7 +10,7 @@ class DataBar extends StatefulWidget {
 
   DataBar(
       {Key? key,
-      this.unit,
+      this.unit = " ",
       this.fontSize = 36,
       this.decimals = 0,
       this.defaultValue = 0.0,
