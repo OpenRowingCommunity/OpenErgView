@@ -12,7 +12,7 @@ class DataTile extends StatefulWidget {
 
   DataTile(
       {Key? key,
-      this.unit,
+      this.unit = " ",
       this.title = "",
       this.decimals = 0,
       this.defaultValue = 0.0,
@@ -31,6 +31,7 @@ class _DataTileState extends State<DataTile> {
             gradient: getDarkGradient(context),
             border: Border.all(style: BorderStyle.solid, color: Colors.white)),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
               widget.title,
