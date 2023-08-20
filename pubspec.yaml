@@ -40,6 +40,7 @@ dependencies:
   c2bluetooth:
     path: ../c2bluetooth/
   provider: ^6.0.5
+  settings_ui: ^2.0.2
 
 dev_dependencies:
   flutter_test:
