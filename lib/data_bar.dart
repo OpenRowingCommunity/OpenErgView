@@ -5,11 +5,13 @@ class DataBar extends StatefulWidget {
   final double defaultValue;
   final String? unit;
   final int decimals;
+  final double fontSize;
   final Stream<double>? stream;
 
   DataBar(
       {Key? key,
       this.unit,
+      this.fontSize = 36,
       this.decimals = 0,
       this.defaultValue = 0.0,
       this.icon,
@@ -51,8 +53,8 @@ class _DataBarState extends State<DataBar> {
                   } else {
                     double data = snapshot.data ?? widget.defaultValue;
                     return Text(data.toStringAsFixed(widget.decimals),
-                        style: const TextStyle(
-                            fontSize: 42,
+                        style: TextStyle(
+                            fontSize: widget.fontSize,
                             fontWeight: FontWeight.bold,
                             color: Colors.black));
                   }
