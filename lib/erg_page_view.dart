@@ -5,16 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:openergview/constants.dart';
 import 'package:openergview/erg_grid_view.dart';
 import 'package:openergview/settings_page_view.dart';
+import 'package:provider/provider.dart';
 
 import 'data_tile.dart';
 import 'devices_list/devices_bloc_provider.dart';
 import 'devices_list/devices_list_view.dart';
 import 'erg_staggered_view.dart';
+import 'src/ergometerstore.dart';
 import 'utils.dart';
 
 class ErgPageView extends StatefulWidget {
-  final Ergometer? erg;
-  ErgPageView({Key? key, this.erg}) : super(key: key);
+  ErgPageView({super.key});
 
   @override
   _ErgPageViewState createState() => _ErgPageViewState();
@@ -32,6 +33,8 @@ class _ErgPageViewState extends State<ErgPageView>
 
   StreamSubscription<ErgometerConnectionState>? _ergConnectionStatus;
 
+  late ErgometerStore? ergstore;
+
   late final TabController tabController;
 
   @override
@@ -40,9 +43,11 @@ class _ErgPageViewState extends State<ErgPageView>
     tabController = TabController(
         length: _pageCount, initialIndex: _currentIndex, vsync: this);
 
-    if (widget.erg != null) {
+    ergstore = Provider.of<ErgometerStore>(context);
+
+    if (ergstore != null && ergstore!.erg != null) {
       _ergConnectionStatusStream =
-          widget.erg?.connectAndDiscover().asBroadcastStream(
+          ergstore!.erg!.connectAndDiscover().asBroadcastStream(
         onCancel: (controller) {
           print('Stream paused');
           controller.pause();
@@ -83,7 +88,7 @@ class _ErgPageViewState extends State<ErgPageView>
                   DataTile(
                       title: "distance",
                       defaultValue: 1,
-                      stream: widget.erg
+                      stream: ergstore?.erg
                           ?.monitorForData({"general.distance"}).map((event) {
                         var data = event["general.distance"] as double;
                         print(data);
@@ -101,7 +106,7 @@ class _ErgPageViewState extends State<ErgPageView>
                     DataTile(
                         title: "distance",
                         defaultValue: 1,
-                        stream: widget.erg
+                        stream: ergstore?.erg
                             ?.monitorForData({"general.distance"}).map((event) {
                           var data = event["general.distance"] as double;
                           print(data);
