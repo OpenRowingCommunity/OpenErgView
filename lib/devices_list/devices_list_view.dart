@@ -16,6 +16,8 @@ import 'devices_bloc_provider.dart';
 typedef DeviceTapListener = void Function();
 
 class DevicesListScreen extends StatefulWidget {
+  DevicesListScreen({super.key});
+
   @override
   State<DevicesListScreen> createState() => DeviceListScreenState();
 }
