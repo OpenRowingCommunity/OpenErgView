@@ -11,4 +11,6 @@ This is a project that is created as a more advanced demo application for showin
 ## Building
 Build process is just like any flutter app
 
-Tested primarily on Android and Linux. Results on other platforms may vary.
+
+
+Tested primarily on Android with some Linux desktop testing used for layout prototyping. Results on other platforms may vary, linux desktop seems to be lacking support from the underlying bluetooth library.
