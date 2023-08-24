@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 class DataBar extends StatefulWidget {
   final IconData? icon;
-  final double defaultValue;
+  final String defaultValue;
   final String? unit;
   final int decimals;
   final double fontSize;
-  final Stream<double>? stream;
+  final Stream<String>? stream;
 
   DataBar(
       {Key? key,
       this.unit = " ",
       this.fontSize = 36,
       this.decimals = 0,
-      this.defaultValue = 0.0,
+      this.defaultValue = "0",
       this.icon,
       this.stream});
 
@@ -40,19 +40,19 @@ class _DataBarState extends State<DataBar> {
               )
             else
               SizedBox(width: 50),
-            StreamBuilder<double>(
+            StreamBuilder<String>(
                 stream: widget.stream,
                 initialData: widget.defaultValue,
                 builder:
-                    (BuildContext context, AsyncSnapshot<double> snapshot) {
+                    (BuildContext context, AsyncSnapshot<String> snapshot) {
                   if (snapshot.hasError) {
                     return const Text(
                       "Error",
                       style: TextStyle(color: Colors.red),
                     );
                   } else {
-                    double data = snapshot.data ?? widget.defaultValue;
-                    return Text(data.toStringAsFixed(widget.decimals),
+                    String data = snapshot.data ?? widget.defaultValue;
+                    return Text(data,
                         style: TextStyle(
                             fontSize: widget.fontSize,
                             fontWeight: FontWeight.bold,

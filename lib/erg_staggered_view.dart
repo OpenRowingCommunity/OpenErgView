@@ -1,3 +1,4 @@
+import 'package:c2bluetooth/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:openergview/data_bar.dart';
 import 'package:openergview/data_tile.dart';
@@ -6,6 +7,12 @@ class ErgStaggeredView extends StatelessWidget {
   final List<Widget> children;
 
   const ErgStaggeredView({super.key, required this.children});
+
+  String _durationFormatter(Duration value) {
+    int seconds =
+        value.inSeconds - (value.inMinutes * Duration.secondsPerMinute);
+    return "${value.inMinutes}:$seconds";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +38,10 @@ class ErgStaggeredView extends StatelessWidget {
                           children: <Widget>[
                         Expanded(
                             flex: 2,
-                            child: DataBar(defaultValue: 2000, unit: "m")),
+                            child: DataBar(defaultValue: "2000", unit: "m")),
                         Expanded(
                             flex: 1,
-                            child: DataBar(defaultValue: 32, unit: "s/m"))
+                            child: DataBar(defaultValue: "32", unit: "s/m"))
                       ])),
                   Expanded(
                       flex: 2,
@@ -43,7 +50,8 @@ class ErgStaggeredView extends StatelessWidget {
                           children: <Widget>[
                             Expanded(
                                 child: DataBar(
-                              defaultValue: 2000,
+                              defaultValue:
+                                  wattsToSplit(123, includeTenths: false),
                               unit: "/500m",
                               fontSize: 64,
                             ))
@@ -52,18 +60,25 @@ class ErgStaggeredView extends StatelessWidget {
                       child: Row(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
-                        Expanded(flex: 2, child: DataBar(defaultValue: 2000)),
+                        Expanded(
+                            flex: 2,
+                            child: DataBar(
+                                defaultValue:
+                                    _durationFormatter(Duration(seconds: 32)))),
                         Expanded(
                             flex: 1,
-                            child:
-                                DataBar(icon: Icons.favorite, defaultValue: 32))
+                            child: DataBar(
+                                icon: Icons.favorite, defaultValue: "165"))
                       ])),
                   Expanded(
                       child: Row(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
                         Expanded(
-                            child: DataBar(defaultValue: 2000, unit: "ave/500"))
+                            child: DataBar(
+                                defaultValue:
+                                    wattsToSplit(123, includeTenths: false),
+                                unit: "ave/500"))
                       ])),
                 ])),
         SizedBox(
