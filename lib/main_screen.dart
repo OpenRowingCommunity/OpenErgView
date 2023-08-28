@@ -35,13 +35,10 @@ class _MainScreenState extends State<MainScreen>
 
   late ErgometerStore? ergstore;
 
-  late final TabController tabController;
 
   @override
   void initState() {
     super.initState();
-    tabController = TabController(
-        length: _pageCount, initialIndex: _currentIndex, vsync: this);
   }
 
   @override
@@ -72,6 +69,27 @@ class _MainScreenState extends State<MainScreen>
     }
   }
 
+  List<Widget> _buildPageIndicator(length, selectedIndex) {
+    List<Widget> list = [];
+    for (int i = 0; i < length; i++) {
+      // list.add(i == selectedIndex ? TabIndicator(true) : TabIndicator(false));
+      list.add(i == selectedIndex
+          ? const TabPageSelectorIndicator(
+              backgroundColor: Colors.white,
+              borderColor: Colors.white,
+              size: 12,
+              borderStyle: BorderStyle.solid,
+            )
+          : const TabPageSelectorIndicator(
+              backgroundColor: Colors.grey,
+              borderColor: Colors.grey,
+              size: 12,
+              borderStyle: BorderStyle.solid,
+            ));
+    }
+    return list;
+  }
+
   @override
   Widget build(BuildContext context) {
     final PageController pageController = PageController(initialPage: 0);
@@ -85,7 +103,6 @@ class _MainScreenState extends State<MainScreen>
               onPageChanged: (newIndex) {
                 setState(() {
                   _currentIndex = newIndex;
-                  tabController.animateTo(newIndex);
                 });
               },
               children: <Widget>[
@@ -239,12 +256,9 @@ class _MainScreenState extends State<MainScreen>
                                     })
                                 : null,
                           ),
-                        TabPageSelector(
-                          color: Colors.grey,
-                          borderStyle: BorderStyle.none,
-                          selectedColor: Colors.white,
-                          controller: tabController,
-                        ),
+                        Row(
+                            children:
+                                _buildPageIndicator(_pageCount, _currentIndex)),
                         if (isPointerDevice(context))
                           IconButton(
                             tooltip: 'Next',
@@ -278,6 +292,5 @@ class _MainScreenState extends State<MainScreen>
   @override
   void dispose() {
     super.dispose();
-    tabController.dispose();
   }
 }
