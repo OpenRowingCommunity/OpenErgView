@@ -14,15 +14,15 @@ import 'erg_staggered_view.dart';
 import 'src/ergometerstore.dart';
 import 'utils.dart';
 
-class ErgPageView extends StatefulWidget {
-  ErgPageView({super.key});
+class MainScreen extends StatefulWidget {
+  MainScreen({super.key});
 
   @override
-  _ErgPageViewState createState() => _ErgPageViewState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
 ///depends on [ErgometerStore]
-class _ErgPageViewState extends State<ErgPageView>
+class _MainScreenState extends State<MainScreen>
     with SingleTickerProviderStateMixin {
   //TODO: remove this magic number somehow
   int _pageCount = 3;
