@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:c2bluetooth/helpers.dart';
 import 'package:flutter/material.dart';
-import 'src/components/data_bar.dart';
+import '../components/data_bar.dart';
 
 class ErgStaggeredView extends StatelessWidget {
   final List<Widget> children;

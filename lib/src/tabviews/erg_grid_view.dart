@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'src/components/data_tile.dart';
+import '../components/data_tile.dart';
 
 class ErgGridView extends StatelessWidget {
   final List<DataTile> children;
