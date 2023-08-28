@@ -7,9 +7,9 @@ import 'package:openergview/erg_grid_view.dart';
 import 'package:openergview/settings_screen.dart';
 import 'package:provider/provider.dart';
 
-import 'data_tile.dart';
 import 'devices_list/devices_bloc_provider.dart';
 import 'devices_list/devices_list_view.dart';
+import 'src/components/data_tile.dart';
 import 'erg_staggered_view.dart';
 import 'src/ergometerstore.dart';
 import 'utils.dart';
