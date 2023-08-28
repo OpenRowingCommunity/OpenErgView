@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:openergview/src/ergometerstore.dart';
 import 'package:provider/provider.dart';
 
-import 'erg_page_view.dart';
+import 'main_screen.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(

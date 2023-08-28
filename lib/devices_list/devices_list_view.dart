@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:openergview/src/ergometerstore.dart';
 import 'package:provider/provider.dart';
 
-import '../erg_page_view.dart';
+import '../main_screen.dart';
 // import '../model/ble_device.dart';
 
 import 'devices_bloc.dart';
