@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:c2bluetooth/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:openergview/data_bar.dart';
@@ -19,8 +21,8 @@ class ErgStaggeredView extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     // account for bottom bar height and padding
     double spaceHeight = size.height - kBottomNavigationBarHeight;
-    final double itemHeight = (spaceHeight) / 2 - 12;
 
+    final double itemHeight = (spaceHeight) / 2 + (Platform.isLinux ? 0 : -12);
     final double itemWidth = size.width / 3;
     return Scaffold(
         body: Row(
