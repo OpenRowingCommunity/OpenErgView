@@ -118,12 +118,8 @@ class _MainScreenState extends State<MainScreen>
                   DataTile(
                       title: "distance",
                       defaultValue: 1,
-                      stream: ergstore?.erg
-                          ?.monitorForData({"general.distance"}).map((event) {
-                        var data = event["general.distance"] as double;
-                        print(data);
-                        return data;
-                      })),
+                      stream:
+                          getDoubleDataStream(ergstore, "general.distance")),
                   DataTile(
                       title: "Drive Length",
                       defaultValue: 1.27,
@@ -137,12 +133,8 @@ class _MainScreenState extends State<MainScreen>
                     DataTile(
                         title: "distance",
                         defaultValue: 1,
-                        stream: ergstore?.erg
-                            ?.monitorForData({"general.distance"}).map((event) {
-                          var data = event["general.distance"] as double;
-                          print(data);
-                          return data;
-                        })),
+                        stream:
+                            getDoubleDataStream(ergstore, "general.distance")),
                     DataTile(
                         title: "Drive Length",
                         defaultValue: 1.27,
