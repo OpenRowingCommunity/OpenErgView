@@ -125,11 +125,12 @@ class _MainScreenState extends State<MainScreen>
                         return data;
                       })),
                   DataTile(
-                    title: "Drive Length",
-                    defaultValue: 1.27,
-                    unit: "m",
-                    decimals: 2,
-                  )
+                      title: "Drive Length",
+                      defaultValue: 1.27,
+                      unit: "m",
+                      decimals: 2,
+                      stream:
+                          getDoubleDataStream(ergstore, "stroke.drive_length"))
                 ]),
                 ErgGridView(
                   children: [
@@ -143,24 +144,32 @@ class _MainScreenState extends State<MainScreen>
                           return data;
                         })),
                     DataTile(
-                      title: "Drive Length",
-                      defaultValue: 1.27,
-                      unit: "m",
-                      decimals: 2,
-                    ),
+                        title: "Drive Length",
+                        defaultValue: 1.27,
+                        unit: "m",
+                        decimals: 2,
+                        stream: getDoubleDataStream(
+                            ergstore, "stroke.drive_length")),
                     DataTile(
-                      title: "Average Force",
-                      defaultValue: 264,
-                      unit: "lb",
-                    ),
+                        title: "Average Force",
+                        defaultValue: 264,
+                        unit: "lb",
+                        stream: getDoubleDataStream(
+                            ergstore, "stroke.drive_force.average")),
                     DataTile(title: "Drag Factor", defaultValue: 218),
+                    //TODO: drive length over drive time
                     DataTile(
                       title: "Drive Speed",
                       defaultValue: 12.10,
                       unit: "m/s",
                       decimals: 2,
                     ),
-                    DataTile(title: "Peak Force", defaultValue: 341, unit: "lb")
+                    DataTile(
+                        title: "Peak Force",
+                        defaultValue: 341,
+                        unit: "lb",
+                        stream: getDoubleDataStream(
+                            ergstore, "stroke.drive_force.max"))
                   ],
                 ),
                 Center(
