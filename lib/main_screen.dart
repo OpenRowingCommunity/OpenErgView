@@ -90,6 +90,14 @@ class _MainScreenState extends State<MainScreen>
     return list;
   }
 
+  Stream<double>? getDoubleDataStream(ErgometerStore? ergstore, String datakey) {
+    return ergstore?.erg?.monitorForData({datakey}).map((event) {
+      var data = event[datakey] as double;
+      print(data);
+      return data;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final PageController pageController = PageController(initialPage: 0);
