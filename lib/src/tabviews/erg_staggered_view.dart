@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:c2bluetooth/helpers.dart';
 import 'package:flutter/material.dart';
+import '../../utils.dart';
 import '../components/data_bar.dart';
 import '../ergometerstore.dart';
 
@@ -10,11 +11,6 @@ class ErgStaggeredView extends StatelessWidget {
 
   final ErgometerStore? ergstore;
 
-  String _durationFormatter(Duration value) {
-    int seconds =
-        value.inSeconds - (value.inMinutes * Duration.secondsPerMinute);
-    return "${value.inMinutes}:$seconds";
-  }
   const ErgStaggeredView({super.key, required this.children, this.ergstore});
 
   @override

@@ -11,6 +11,10 @@ bool isTouchDevice(BuildContext context) {
 
 bool isPointerDevice(BuildContext context) => !isTouchDevice(context);
 
+String durationFormatter(Duration value) {
+  int seconds = value.inSeconds - (value.inMinutes * Duration.secondsPerMinute);
+  return "${value.inMinutes}:$seconds";
+}
 
 Stream<double>? getDoubleDataStream(ErgometerStore? ergstore, String datakey) {
   return ergstore?.erg?.monitorForData({datakey}).map((event) {
