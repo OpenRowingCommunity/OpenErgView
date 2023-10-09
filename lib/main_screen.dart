@@ -106,7 +106,7 @@ class _MainScreenState extends State<MainScreen>
                 });
               },
               children: <Widget>[
-                ErgStaggeredView(children: [
+                ErgStaggeredView(ergstore: ergstore, children: [
                   DataTile(
                       title: "distance",
                       defaultValue: 1,
