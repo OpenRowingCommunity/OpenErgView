@@ -37,7 +37,11 @@ class ErgStaggeredView extends StatelessWidget {
                           children: <Widget>[
                         Expanded(
                             flex: 2,
-                            child: DataBar(defaultValue: "2000", unit: "m")),
+                            child: DataBar(
+                                defaultValue: "2000",
+                                unit: "m",
+                                stream: getStringDataStream(
+                                    ergstore, "general.distance"))),
                         Expanded(
                             flex: 1,
                             child: DataBar(defaultValue: "32", unit: "s/m"))
@@ -49,11 +53,12 @@ class ErgStaggeredView extends StatelessWidget {
                           children: <Widget>[
                             Expanded(
                                 child: DataBar(
-                              defaultValue:
-                                  wattsToSplit(123, includeTenths: false),
-                              unit: "/500m",
-                              fontSize: 64,
-                            ))
+                                    defaultValue:
+                                        wattsToSplit(123, includeTenths: false),
+                                    unit: "/500m",
+                                    fontSize: 64,
+                                    stream: getSplitDataStream(
+                                        ergstore, "stroke.power")))
                           ])),
                   Expanded(
                       child: Row(
@@ -63,7 +68,9 @@ class ErgStaggeredView extends StatelessWidget {
                             flex: 2,
                             child: DataBar(
                                 defaultValue:
-                                    _durationFormatter(Duration(seconds: 32)))),
+                                    durationFormatter(Duration(seconds: 32)),
+                                stream: getDurationDataStream(
+                                    ergstore, "general.elapsed_time"))),
                         Expanded(
                             flex: 1,
                             child: DataBar(
