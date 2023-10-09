@@ -74,7 +74,7 @@ class ErgStaggeredView extends StatelessWidget {
                         Expanded(
                             flex: 1,
                             child: DataBar(
-                                icon: Icons.favorite, defaultValue: "165"))
+                                icon: Icons.favorite, defaultValue: "0"))
                       ])),
                   Expanded(
                       child: Row(
